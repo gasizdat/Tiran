@@ -1,0 +1,58 @@
+<!-- 
+   Copyright 2012: gasizdat
+          License: GNU GPLv3 [1] http://www.gnu.org/licenses/ [2] http://www.gnu.org/licenses/gpl-3.0.html
+ Original sources: http://gasizdat.narod.ru/projects/game2/ at http://gasizdat.narod.ru/projects/game2/h.html
+  Game project at: http://code.google.com/p/tiran/
+
+  TIRAN is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  TIRAN is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with TIRAN.  If not, see <http://www.gnu.org/licenses/>.
+*/
+-->
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  xml:lang="ru" lang="ru">
+<title>TIRAN by © gasizdat</title>
+<head id="headId">
+  <meta http-equiv="Content-Type" content="text/html;" />
+  <meta http-equiv="Content-Language" content="ru" />
+  <script src="helpers.js" type="text/javascript" ></script>
+  <script src="effects.js" type="text/javascript" ></script>
+  <script src="strres.js" type="text/javascript" ></script>
+  <script src="enemy.js" type="text/javascript" ></script>
+  <script src="bg.js" type="text/javascript" ></script>
+  <script src="landscape.js" type="text/javascript" ></script>
+  <script src="pers.js" type="text/javascript" ></script>
+  <script src="sprite.js" type="text/javascript" ></script>
+  <script src="sprite3d.js" type="text/javascript" ></script>
+  <script src="ga.js" type="text/javascript" ></script>
+  <style  type="text/css">
+  .playArea 
+  { 
+    background: #4FA7FF;
+    color: lightGreen;
+    border: solid 2px green; 
+  }
+  </style>
+</head>
+<body onload="prepareOnLoad()" >
+  <table align="center" ondblclick="return false">
+    <body><tr><td>
+    <canvas id="playArea" class="playArea" width="800px" height="530px">
+      <span style="color:red">Your browser doesn't supported HTML5 canvas</span>
+    </canvas>
+    </td></tr>
+    <tr><td>
+    </td></tr>
+    </body>
+  </table>
+</body>
