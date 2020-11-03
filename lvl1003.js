@@ -30,9 +30,9 @@ function Level1003(game_area, money, health_pc, lifes_count, z)
     if(!game_area.msgFrame.visible)
     {
       if(_integralCoord )
-        game_area.msgFrame.show("÷елые координаты", false, "green", 10000);
+        game_area.msgFrame.show("Целые координаты", false, "green", 10000);
       else
-        game_area.msgFrame.show("ƒробные координаты", false, "red", 10000);
+        game_area.msgFrame.show("Дробные координаты", false, "red", 10000);
 
       for(var i = 0; i < _enemies.length; i++)
         delete _enemies.sprite(i);
