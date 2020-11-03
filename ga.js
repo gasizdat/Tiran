@@ -226,12 +226,12 @@ function GameArea()
   this.savedStatesList = function()
   {
     var ret = [];
-    var ñ = CookieHelper.getCookie(_SGC_NAME);
-    if(!ñ)
-      ñ = 0;
+    var c = CookieHelper.getCookie(_SGC_NAME);
+    if(!c)
+      c = 0;
     else
-      ñ = parseInt(ñ);
-    for(var i = 0; i < ñ; i++)
+      c = parseInt(c);
+    for(var i = 0; i < c; i++)
     {
       var s = _getState(i);
       if(s)
