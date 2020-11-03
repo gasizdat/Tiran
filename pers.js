@@ -12,9 +12,9 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
   var _runSpeedX = 0;
   var _runDinamic = 0.17;
   var _jumpSpeedX = 0;
-  var _jumpLevel = 0; //уровень прыжка персонажа
+  var _jumpLevel = 0; //СѓСЂРѕРІРµРЅСЊ РїСЂС‹Р¶РєР° РїРµСЂСЃРѕРЅР°Р¶Р°
   var _jumpDinamic = 5;
-  var _curGroundLevel; //текущий уровень ландшафта, по которому гуляем
+  var _curGroundLevel; //С‚РµРєСѓС‰РёР№ СѓСЂРѕРІРµРЅСЊ Р»Р°РЅРґС€Р°С„С‚Р°, РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РіСѓР»СЏРµРј
   var _faceDip = 20;
   var _faceSprite = new ImageSprite("face03.png", sc, 0, 0, face_z);
   var _bodySprite = new ImageSprite("run.png", sc, 0, 0, body_z);
@@ -25,12 +25,12 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
   var _bodyOffsetX = (_width - _bodySprite.width) / 2;
   var _persOffsetX = _width / 2;
   var _persOffsetY = _height / 2;
-  var _minFrameIncrementation = 0.3; //Минимальное значение приращения фрейма анимации
-  var _runFramesCount = 12; //Число фреймов основного движения
-  var _accelerationKoeff = 1; //Коэффициент ускорения движений
-  var _dxHysteresis = 30; //Гистерезис разности координат мыши и протогониста, при котором ускорение не фиксируется
-  var _barrierHysteresis = 5; //Гистерезис определения упирания в барьер
-  var _angle = 0; //Угол поворота перса в пространстве (радианы)
+  var _minFrameIncrementation = 0.3; //РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїСЂРёСЂР°С‰РµРЅРёСЏ С„СЂРµР№РјР° Р°РЅРёРјР°С†РёРё
+  var _runFramesCount = 12; //Р§РёСЃР»Рѕ С„СЂРµР№РјРѕРІ РѕСЃРЅРѕРІРЅРѕРіРѕ РґРІРёР¶РµРЅРёСЏ
+  var _accelerationKoeff = 1; //РљРѕСЌС„С„РёС†РёРµРЅС‚ СѓСЃРєРѕСЂРµРЅРёСЏ РґРІРёР¶РµРЅРёР№
+  var _dxHysteresis = 30; //Р“РёСЃС‚РµСЂРµР·РёСЃ СЂР°Р·РЅРѕСЃС‚Рё РєРѕРѕСЂРґРёРЅР°С‚ РјС‹С€Рё Рё РїСЂРѕС‚РѕРіРѕРЅРёСЃС‚Р°, РїСЂРё РєРѕС‚РѕСЂРѕРј СѓСЃРєРѕСЂРµРЅРёРµ РЅРµ С„РёРєСЃРёСЂСѓРµС‚СЃСЏ
+  var _barrierHysteresis = 5; //Р“РёСЃС‚РµСЂРµР·РёСЃ РѕРїСЂРµРґРµР»РµРЅРёСЏ СѓРїРёСЂР°РЅРёСЏ РІ Р±Р°СЂСЊРµСЂ
+  var _angle = 0; //РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РїРµСЂСЃР° РІ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРµ (СЂР°РґРёР°РЅС‹)
   var _lastY;
   
   PropertyHelper.initializeSprite(this, sc, [function(){ return x; }, _setX], [function(){ return y; }, _setY], Math.min(face_z, body_z), function(){ return _width; }, function() { return _height; }, true);
@@ -40,14 +40,14 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
     _bodySprite.addEffect(e);
   }
   
-  PropertyHelper.defineGetter(this, "bottom", function(){ return this.y + this.height - (_curGroundLevel ? _curGroundLevel.d : 0); }); //индикатор здоровья текущей инкарнации
-  PropertyHelper.defineGetter(this, "healthPc", function(){ return health_pc; }); //индикатор здоровья текущей инкарнации
-  PropertyHelper.defineGetter(this, "lifeCount", function(){ return lifes_count; }); //число инкарнаций, после чего превращаемся в баобаба
+  PropertyHelper.defineGetter(this, "bottom", function(){ return this.y + this.height - (_curGroundLevel ? _curGroundLevel.d : 0); }); //РёРЅРґРёРєР°С‚РѕСЂ Р·РґРѕСЂРѕРІСЊСЏ С‚РµРєСѓС‰РµР№ РёРЅРєР°СЂРЅР°С†РёРё
+  PropertyHelper.defineGetter(this, "healthPc", function(){ return health_pc; }); //РёРЅРґРёРєР°С‚РѕСЂ Р·РґРѕСЂРѕРІСЊСЏ С‚РµРєСѓС‰РµР№ РёРЅРєР°СЂРЅР°С†РёРё
+  PropertyHelper.defineGetter(this, "lifeCount", function(){ return lifes_count; }); //С‡РёСЃР»Рѕ РёРЅРєР°СЂРЅР°С†РёР№, РїРѕСЃР»Рµ С‡РµРіРѕ РїСЂРµРІСЂР°С‰Р°РµРјСЃСЏ РІ Р±Р°РѕР±Р°Р±Р°
   PropertyHelper.defineAccessors(this, "frame", [function(){ return _bodySprite.frame; }, function(f) { _bodySprite.frame = f; }]);
   PropertyHelper.defineAccessors(this, "speedX", [function() { return _persSpeedX(); }, function(v){ _runSpeedX = v; _jumpSpeedX = 0; }]);
-  //Динамика бега. Чем больше - тем быстрее носится, 0 - вообще не бегает
+  //Р”РёРЅР°РјРёРєР° Р±РµРіР°. Р§РµРј Р±РѕР»СЊС€Рµ - С‚РµРј Р±С‹СЃС‚СЂРµРµ РЅРѕСЃРёС‚СЃСЏ, 0 - РІРѕРѕР±С‰Рµ РЅРµ Р±РµРіР°РµС‚
   PropertyHelper.defineAccessors(this, "runDinamic", [function() { return _runDinamic; }, function(v){ _runDinamic = v; }]);
-  //Динамика прыжка. Чем больше - тем выше прыгает, 0 - вообще не прыгает
+  //Р”РёРЅР°РјРёРєР° РїСЂС‹Р¶РєР°. Р§РµРј Р±РѕР»СЊС€Рµ - С‚РµРј РІС‹С€Рµ РїСЂС‹РіР°РµС‚, 0 - РІРѕРѕР±С‰Рµ РЅРµ РїСЂС‹РіР°РµС‚
   PropertyHelper.defineAccessors(this, "jumpDinamic", [function() { return _jumpDinamic; }, function(v) { _jumpDinamic = v; }]);
   PropertyHelper.defineGetter(this, "currentGroundLevel", function() { return _curGroundLevel; });  
   PropertyHelper.defineAccessors(this, "jumpLevel", [function() { return _jumpLevel; }, function(v) { _jumpLevel = v; }]);  
@@ -80,7 +80,7 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
     if(health_pc <= 0 )
     {
       if((--lifes_count) <= 0)
-        return false; //все, пришел пушной зверёк
+        return false; //РІСЃРµ, РїСЂРёС€РµР» РїСѓС€РЅРѕР№ Р·РІРµСЂС‘Рє
       health_pc = 100;
     }
     if(_clipCount == 0)
@@ -90,7 +90,7 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
     }
     else
       _clipCount = 7;
-    return true; //пока живем
+    return true; //РїРѕРєР° Р¶РёРІРµРј
   }
 
   this.increaseLife = function(dpc)
@@ -109,7 +109,7 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
     if(_jumpDinamic)
       _jumpProcessor(dc);
           
-    if(!_jumpLevel) //когда не дрыгает ногами в прыжке - смотрится лучше
+    if(!_jumpLevel) //РєРѕРіРґР° РЅРµ РґСЂС‹РіР°РµС‚ РЅРѕРіР°РјРё РІ РїСЂС‹Р¶РєРµ - СЃРјРѕС‚СЂРёС‚СЃСЏ Р»СѓС‡С€Рµ
     {    
       var leader_speed_x = _runSpeedX; //(_jumpSpeedX && _runSpeedX) ? _jumpSpeedX / Math.abs(_runSpeedX) : _runSpeedX;
       var df = Math.abs(leader_speed_x) * _runDinamic;
@@ -180,7 +180,7 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
     }
     else
     {
-      _clipCount = 0; //т.к. может поменяться асинхронно
+      _clipCount = 0; //С‚.Рє. РјРѕР¶РµС‚ РїРѕРјРµРЅСЏС‚СЊСЃСЏ Р°СЃРёРЅС…СЂРѕРЅРЅРѕ
       _faceSprite.visible = true;
     }
   }
@@ -248,7 +248,7 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
     }
     else /*_jumpLevel == 0*/ if(_curGroundLevel && _curGroundLevel.ended(x + _persOffsetX)) 
     {
-      _jumpLevel = -y; //соскочили с текущего уровня ланшафта
+      _jumpLevel = -y; //СЃРѕСЃРєРѕС‡РёР»Рё СЃ С‚РµРєСѓС‰РµРіРѕ СѓСЂРѕРІРЅСЏ Р»Р°РЅС€Р°С„С‚Р°
       _jumpSpeedX = 0;
     }
   }
@@ -268,7 +268,7 @@ function MainPerson(game_area, ground_levels_getter, sc, health_pc, lifes_count,
   {
     if(_jumpDinamic)
     {
-      var v = y + _height - (Math.pow(Math.E/1.5, Math.abs(_runSpeedX)) / (0.1 * _accelerationKoeff) + _height * 1.5 /*выше головы не прыгаем*/);
+      var v = y + _height - (Math.pow(Math.E/1.5, Math.abs(_runSpeedX)) / (0.1 * _accelerationKoeff) + _height * 1.5 /*РІС‹С€Рµ РіРѕР»РѕРІС‹ РЅРµ РїСЂС‹РіР°РµРј*/);
       if(v < 0)
         v = 1;
       if(!_jumpLevel)

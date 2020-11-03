@@ -12,9 +12,9 @@ function Level1001(game_area, money, health_pc, lifes_count, z)
   var _ground;
   var _processor;
   
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //процент здоровья
-  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊСЏ
+  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
 
   function TestImageSprite(src, sc, x, y, z, show_always)
   {
@@ -23,10 +23,10 @@ function Level1001(game_area, money, health_pc, lifes_count, z)
     var _hide = false;
     var _isVisible = false;
 
-    this.intPos = false;  //признак рассчета позиции спрайта в целом виде.
-    this.scale = 1;      //масштабирование размеров
-    this.frame = 0;      //номер фрейма анимации
-    this.frameWidth = 0; //0, если спрайт не анимированный, иначе - размер кадра анимации (кадры расположены горизонтально)
+    this.intPos = false;  //РїСЂРёР·РЅР°Рє СЂР°СЃСЃС‡РµС‚Р° РїРѕР·РёС†РёРё СЃРїСЂР°Р№С‚Р° РІ С†РµР»РѕРј РІРёРґРµ.
+    this.scale = 1;      //РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ СЂР°Р·РјРµСЂРѕРІ
+    this.frame = 0;      //РЅРѕРјРµСЂ С„СЂРµР№РјР° Р°РЅРёРјР°С†РёРё
+    this.frameWidth = 0; //0, РµСЃР»Рё СЃРїСЂР°Р№С‚ РЅРµ Р°РЅРёРјРёСЂРѕРІР°РЅРЅС‹Р№, РёРЅР°С‡Рµ - СЂР°Р·РјРµСЂ РєР°РґСЂР° Р°РЅРёРјР°С†РёРё (РєР°РґСЂС‹ СЂР°СЃРїРѕР»РѕР¶РµРЅС‹ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕ)
     this.dx = (Random.chance(0.5) ? -1 : 1) * (1 + Random.int(0, 30));
     this.dy = (Random.chance(0.5) ? -1 : 1) * (1 + Random.int(0, 30));
     
@@ -69,9 +69,9 @@ function Level1001(game_area, money, health_pc, lifes_count, z)
   function _test1_1(dc)
   {
     if(!_showAlways)
-      _sName = "\"умных\"";
+      _sName = "\"СѓРјРЅС‹С…\"";
     else
-      _sName = "\"глупых\"";
+      _sName = "\"РіР»СѓРїС‹С…\"";
     for(var i = 0; i < _outFrameSpritesCount; i++)
     {
       var is = new TestImageSprite(_image_source_array[Random.int(2, 5)], _faces, 
@@ -90,12 +90,12 @@ function Level1001(game_area, money, health_pc, lifes_count, z)
         var is = new TestImageSprite(_image_source_array[Random.int(2, 5)], _faces, 
           game_area.drawContext.width/2, game_area.drawContext.height/2, _faces.length, _showAlways); 
       }
-      game_area.msgFrame.show("Добавляем " + _sName + " cпрайтов: " + _faces.length, false, "green", Infinity);
+      game_area.msgFrame.show("Р”РѕР±Р°РІР»СЏРµРј " + _sName + " cРїСЂР°Р№С‚РѕРІ: " + _faces.length, false, "green", Infinity);
     }
     else
     {
       _processor.redraw = _test1_3.bind(this);
-      game_area.msgFrame.show("Тестируем производительность " + _faces.length + " " + _sName + " cпрайтов", false, "green", 10000);    
+      game_area.msgFrame.show("РўРµСЃС‚РёСЂСѓРµРј РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚СЊ " + _faces.length + " " + _sName + " cРїСЂР°Р№С‚РѕРІ", false, "green", 10000);    
     }
   }
   function _test1_3(dc)
@@ -103,7 +103,7 @@ function Level1001(game_area, money, health_pc, lifes_count, z)
     if(!game_area.msgFrame.visible)
     {
       _processor.redraw = _test1_4.bind(this);
-      game_area.msgFrame.show("Удаляем " + _sName + " cпрайтов", false, "green", 3000);
+      game_area.msgFrame.show("РЈРґР°Р»СЏРµРј " + _sName + " cРїСЂР°Р№С‚РѕРІ", false, "green", 3000);
       for(var i = 0; i < _faces.length; i++)
         delete _faces.sprite(i);
       _faces.clear();

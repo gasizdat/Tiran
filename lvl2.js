@@ -13,10 +13,10 @@ function Level2(game_area, money, health_pc, lifes_count, z)
                             "rock06.jpg", "face02.png", "run.png", "spinning_coin_gold02.png", "spinning_ruby01.png", 
                             "tree01.png", "tree02.png", "tree03.png", "tree04.png", "enemy01.png", "exit.png",  "castle01.png", 
                             "castle02.png"];
-  var _pers; //протогонист
-  var _rndSrfc; //рельеф поверхности карты
-  var _clouds; //случайные облака с параллаксом
-  var _ground; //поверхность карты
+  var _pers; //РїСЂРѕС‚РѕРіРѕРЅРёСЃС‚
+  var _rndSrfc; //СЂРµР»СЊРµС„ РїРѕРІРµСЂС…РЅРѕСЃС‚Рё РєР°СЂС‚С‹
+  var _clouds; //СЃР»СѓС‡Р°Р№РЅС‹Рµ РѕР±Р»Р°РєР° СЃ РїР°СЂР°Р»Р»Р°РєСЃРѕРј
+  var _ground; //РїРѕРІРµСЂС…РЅРѕСЃС‚СЊ РєР°СЂС‚С‹
   var _sprites = new SpriteContainer(game_area.spriteContainer, z);
   var _lastMoney = 0;
   var _exitPortal = null;
@@ -30,9 +30,9 @@ function Level2(game_area, money, health_pc, lifes_count, z)
   var _surfAdditionState = 0;
   var _dWidth;
   
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineGetter(this, "healthPc", function() { return _pers.healthPc; }); //процент здоровья
-  PropertyHelper.defineGetter(this, "lifes", function() { return _pers.lifeCount; }); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineGetter(this, "healthPc", function() { return _pers.healthPc; }); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊСЏ
+  PropertyHelper.defineGetter(this, "lifes", function() { return _pers.lifeCount; }); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
   
   this.finalize = function()
   {
@@ -77,7 +77,7 @@ function Level2(game_area, money, health_pc, lifes_count, z)
     {
       _pers.speedX = 0;
       if(_pers.jumpLevel < 0)
-        _pers.jumpLevel = 0; //упасть в тартар не можем
+        _pers.jumpLevel = 0; //СѓРїР°СЃС‚СЊ РІ С‚Р°СЂС‚Р°СЂ РЅРµ РјРѕР¶РµРј
     }
     switch(_rndSrfc.checkEnemyCollision(_pers))
     {
@@ -189,7 +189,7 @@ function Level2(game_area, money, health_pc, lifes_count, z)
     for(var k = Random.int(1, 3); k > 0; k--)
       src_array.push(_rocksSprites[Random.int(0, _rocksSprites.length)]);
     props.rock = new SurfaceSprite(src_array, null, props.x, props.y, props.w, props.h);
-    //Делаем скалу неровной - так прикольнее
+    //Р”РµР»Р°РµРј СЃРєР°Р»Сѓ РЅРµСЂРѕРІРЅРѕР№ - С‚Р°Рє РїСЂРёРєРѕР»СЊРЅРµРµ
     var rp = [];
     rp.push({x:0, y:0});
     var breaks_count = Random.int(5, 12);
@@ -205,7 +205,7 @@ function Level2(game_area, money, health_pc, lifes_count, z)
     
     var src = _grassSprites[Random.int(0, _grassSprites.length)];;
     var img = Cache.getImage(src);
-    //прибавляем 2, иначе из под травы беспонтово вылазят ноги протогониста
+    //РїСЂРёР±Р°РІР»СЏРµРј 2, РёРЅР°С‡Рµ РёР· РїРѕРґ С‚СЂР°РІС‹ Р±РµСЃРїРѕРЅС‚РѕРІРѕ РІС‹Р»Р°Р·СЏС‚ РЅРѕРіРё РїСЂРѕС‚РѕРіРѕРЅРёСЃС‚Р°
     props.grass = new SurfaceSprite([src], null, props.x, props.y - img.height, props.w, img.height);
 
     if(Random.real(0, 3) > 1.7)
@@ -224,14 +224,14 @@ function Level2(game_area, money, health_pc, lifes_count, z)
         var src = new ImageSprite("spinning_ruby01.png");
         src.addEffect(VisualEffects.parametric("frame", Controllers.cyclic(0, 0, src.width / 48, Random.real(0.1, 0.4))));
         src.frameWidth = 48;
-        supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.ruby, 10);//рубин
+        supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.ruby, 10);//СЂСѓР±РёРЅ
       }
       else
       {        
         var src = new ImageSprite("spinning_coin_gold02.png");
         src.addEffect(VisualEffects.parametric("frame", Controllers.cyclic(0, 0, src.width / 32, 0.15)));
         src.frameWidth = 32;
-        supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.coin, 1);//грош
+        supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.coin, 1);//РіСЂРѕС€
       }
       supply_sprite.x = props.x + Random.int(5, props.w - 10);
       supply_sprite.y = props.y - Random.int(32, 150);
@@ -308,7 +308,7 @@ function Level2(game_area, money, health_pc, lifes_count, z)
     new ImageSprite("bg02.jpg", _sprites, 0, 0, 1);
     _clouds = new RandomBackground(["cloud01.png", "cloud02.png", "cloud03.png", "cloud04.png", "cloud05.png",
                             "cloud06.png", "cloud07.png", "cloud08.png", "cloud09.png"], _sprites, 0, -10, 
-                            game_area.drawContext.width, game_area.drawContext.height / 2, 2, function(){ return Random.int(0, 2.1); }); //некоторые тучи прячем, иначе - тормоза
+                            game_area.drawContext.width, game_area.drawContext.height / 2, 2, function(){ return Random.int(0, 2.1); }); //РЅРµРєРѕС‚РѕСЂС‹Рµ С‚СѓС‡Рё РїСЂСЏС‡РµРј, РёРЅР°С‡Рµ - С‚РѕСЂРјРѕР·Р°
     _clouds.parallaxSpeedX = -2.75;
     _ground = new RepeatedBackground("ground01.png", _sprites, 0, game_area.drawContext.height - 30, game_area.drawContext.width, null, false, 3);
     _ground.groundLevel = new levelDescription(5, _ground);

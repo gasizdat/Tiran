@@ -1,6 +1,6 @@
 atom.declare( 'Animator.Entity',
 {
-  toStady : function() //приведение свойств к консистентному состоянию
+  toStady : function() //РїСЂРёРІРµРґРµРЅРёРµ СЃРІРѕР№СЃС‚РІ Рє РєРѕРЅСЃРёСЃС‚РµРЅС‚РЅРѕРјСѓ СЃРѕСЃС‚РѕСЏРЅРёСЋ
   {
     this.triggers.forEach(function(t_info)
     {
@@ -21,18 +21,18 @@ atom.declare( 'Animator.Entity',
   initialize : function(args)
   {
     Animator.Helpers.System.argumentAssertion(arguments, "object");
-    this.container = null; //родительский контейнер
+    this.container = null; //СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ РєРѕРЅС‚РµР№РЅРµСЂ
     this.location = Animator.Helpers.Triplet.get(args.location);
     this.pivot = Animator.Helpers.Triplet.get(args.pivot);
     this.angle = Animator.Helpers.Triplet.get(args.angle);
-    this.triggers = []; //триггеры
+    this.triggers = []; //С‚СЂРёРіРіРµСЂС‹
   },
   
-  //Добавить функцию триггера. 
-  //=> t_func - функция триггера, вида: void function(sender, old_value, new_value)
-  //   prop - имя свойства, при изменении которого вызывается триггер,
-  //          или null (тогда, триггер вызывается при каждом вызове toStady)
-  //<= Id триггера
+  //Р”РѕР±Р°РІРёС‚СЊ С„СѓРЅРєС†РёСЋ С‚СЂРёРіРіРµСЂР°. 
+  //=> t_func - С„СѓРЅРєС†РёСЏ С‚СЂРёРіРіРµСЂР°, РІРёРґР°: void function(sender, old_value, new_value)
+  //   prop - РёРјСЏ СЃРІРѕР№СЃС‚РІР°, РїСЂРё РёР·РјРµРЅРµРЅРёРё РєРѕС‚РѕСЂРѕРіРѕ РІС‹Р·С‹РІР°РµС‚СЃСЏ С‚СЂРёРіРіРµСЂ,
+  //          РёР»Рё null (С‚РѕРіРґР°, С‚СЂРёРіРіРµСЂ РІС‹Р·С‹РІР°РµС‚СЃСЏ РїСЂРё РєР°Р¶РґРѕРј РІС‹Р·РѕРІРµ toStady)
+  //<= Id С‚СЂРёРіРіРµСЂР°
   addTrigger : function(t_func, prop)
   {
     Animator.Helpers.System.argumentAssertion(arguments, "function", "null|string");

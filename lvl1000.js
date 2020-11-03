@@ -14,9 +14,9 @@ function Level1000(game_area, money, health_pc, lifes_count, z)
   var _t3 = 0;
   var _t4 = 0;
   
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //процент здоровья
-  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊСЏ
+  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
 
   function type1()
   {
@@ -103,14 +103,14 @@ function Level1000(game_area, money, health_pc, lifes_count, z)
   
   function _ctor()
   {
-    game_area.msgFrame.show("Идет тестирование", true, "blue", Infinity);
+    game_area.msgFrame.show("РРґРµС‚ С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ", true, "blue", Infinity);
     var processor = new Sprite(_sprites);
     var bg = new ImageSprite("bg00.png", _sprites, 0, 0, 1);
     bg.scale = game_area.drawContext.width / bg.width;
-    new TextSprite(function() { return "Нет замыканий, прямой доступ к полям : " + _t4 }, "25px Comic Sans MS", "white", _sprites, 50, 100, null, 5);
-    new TextSprite(function() { return "Замыкания, доступ через методы:        " + _t1 }, "25px Comic Sans MS", "white", _sprites, 50, 160, null, 2);
-    new TextSprite(function() { return "Нет замыканий, доступ через методы:    " + _t2 }, "25px Comic Sans MS", "white", _sprites, 50, 130, null, 3);
-    new TextSprite(function() { return "Замыкания, доступ через свойства:      " + _t3 }, "25px Comic Sans MS", "white", _sprites, 50, 190, null, 4);
+    new TextSprite(function() { return "РќРµС‚ Р·Р°РјС‹РєР°РЅРёР№, РїСЂСЏРјРѕР№ РґРѕСЃС‚СѓРї Рє РїРѕР»СЏРј : " + _t4 }, "25px Comic Sans MS", "white", _sprites, 50, 100, null, 5);
+    new TextSprite(function() { return "Р—Р°РјС‹РєР°РЅРёСЏ, РґРѕСЃС‚СѓРї С‡РµСЂРµР· РјРµС‚РѕРґС‹:        " + _t1 }, "25px Comic Sans MS", "white", _sprites, 50, 160, null, 2);
+    new TextSprite(function() { return "РќРµС‚ Р·Р°РјС‹РєР°РЅРёР№, РґРѕСЃС‚СѓРї С‡РµСЂРµР· РјРµС‚РѕРґС‹:    " + _t2 }, "25px Comic Sans MS", "white", _sprites, 50, 130, null, 3);
+    new TextSprite(function() { return "Р—Р°РјС‹РєР°РЅРёСЏ, РґРѕСЃС‚СѓРї С‡РµСЂРµР· СЃРІРѕР№СЃС‚РІР°:      " + _t3 }, "25px Comic Sans MS", "white", _sprites, 50, 190, null, 4);
     processor.redraw = _processorRedraw.bind(this);
     
   }

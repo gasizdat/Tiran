@@ -62,9 +62,9 @@ function Level1004(game_area, money, health_pc, lifes_count, z)
   var _processor;
   var _svitok = {res:null, pr:0, ind:0};
 
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //процент здоровья
-  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊСЏ
+  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
 
   this.finalize = function()
   {
@@ -93,7 +93,7 @@ function Level1004(game_area, money, health_pc, lifes_count, z)
             _sprites.removeSprite(_svitok.res);
             delete _svitok.res;
           }
-          _svitok.res = new TextSprite("Планета №" + (i+1), "20 px Arial", "yellow", _sprites, 0, 0, null, 100);
+          _svitok.res = new TextSprite("РџР»Р°РЅРµС‚Р° в„–" + (i+1), "20 px Arial", "yellow", _sprites, 0, 0, null, 100);
           _svitok.pr = o.radius - 10;
           _svitok.ind = i;
           _svitok.res.addEffect(new VisualEffects.parametric("x", function()

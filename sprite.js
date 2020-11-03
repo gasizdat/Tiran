@@ -158,12 +158,12 @@ function SupplySprite(sprite, sc, type, value)
   this.redraw = sprite.redraw.bind(sprite);
 }
 
-//Текстовый спрайт
-//=> text_func - функтор текста
-//   color - цвет текста
-//   sc - спрайт-контейнер
-//   x,y,z - координаты
-//   w - максимально дозволенная ширина текста, если null - без ограничений
+//вЂњРµРєСЃС‚РѕРІС‹Р№ СЃРїСЂР°Р№С‚
+//=> text_func - С„СѓРЅРєС‚РѕСЂ С‚РµРєСЃС‚Р°
+//   color - С†РІРµС‚ С‚РµРєСЃС‚Р°
+//   sc - СЃРїСЂР°Р№С‚-РєРѕРЅС‚РµР№РЅРµСЂ
+//   x,y,z - РєРѕРѕСЂРґРёРЅР°С‚С‹
+//   w - РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕР·РІРѕР»РµРЅРЅР°В¤ С€РёСЂРёРЅР° С‚РµРєСЃС‚Р°, РµСЃР»Рё null - Р±РµР· РѕРіСЂР°РЅРёС‡РµРЅРёР№
 function TextSprite(text_func, font, color, sc, x, y, w, z)
 {
   var _getText;
@@ -191,10 +191,10 @@ function TextSprite(text_func, font, color, sc, x, y, w, z)
   };
 };
 /*
-//Спрайт изображения
-//=> src - путь к ресурсу
-//   sc - спрайт-контейнер
-//   x,y,z - координаты
+//вЂ”РїСЂР°Р№С‚ РёР·РѕР±СЂР°Р¶РµРЅРёВ¤
+//=> src - РїСѓС‚СЊ Рє СЂРµСЃСѓСЂСЃСѓ
+//   sc - СЃРїСЂР°Р№С‚-РєРѕРЅС‚РµР№РЅРµСЂ
+//   x,y,z - РєРѕРѕСЂРґРёРЅР°С‚С‹
 function ImageSprite(src, sc, x, y, z)
 {
   var _auto_frame_count = 0;
@@ -206,10 +206,10 @@ function ImageSprite(src, sc, x, y, z)
     [function() { return _img.height * this.scale; }], 
     [ function() { return _isVisible; }, function(v) { _hide = !v; }]);
 
-  this.intPos = true;  //признак рассчета позиции спрайта в целом виде.
-  this.scale = 1;      //масштабирование размеров
-  this.frame = 0;      //номер фрейма анимации
-  this.frameWidth = 0; //0, если спрайт не анимированный, иначе - размер кадра анимации (кадры расположены горизонтально)
+  this.intPos = true;  //РїСЂРёР·РЅР°Рє СЂР°СЃСЃС‡РµС‚Р° РїРѕР·РёС†РёРё СЃРїСЂР°Р№С‚Р° РІ С†РµР»РѕРј РІРёРґРµ.
+  this.scale = 1;      //РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ СЂР°Р·РјРµСЂРѕРІ
+  this.frame = 0;      //РЅРѕРјРµСЂ С„СЂРµР№РјР° Р°РЅРёРјР°С†РёРё
+  this.frameWidth = 0; //0, РµСЃР»Рё СЃРїСЂР°Р№С‚ РЅРµ Р°РЅРёРјРёСЂРѕРІР°РЅРЅС‹Р№, РёРЅР°С‡Рµ - СЂР°Р·РјРµСЂ РєР°РґСЂР° Р°РЅРёРјР°С†РёРё (РєР°РґСЂС‹ СЂР°СЃРїРѕР»РѕР¶РµРЅС‹ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕ)
   
   this.redraw = function(dc)
   {
@@ -265,10 +265,10 @@ function ImageSprite(src, sc, x, y, z)
     }
   } 
 }*/
-//Спрайт изображения
-//=> src - путь к ресурсу
-//   sc - спрайт-контейнер
-//   x,y,z - координаты
+//вЂ”РїСЂР°Р№С‚ РёР·РѕР±СЂР°Р¶РµРЅРёВ¤
+//=> src - РїСѓС‚СЊ Рє СЂРµСЃСѓСЂСЃСѓ
+//   sc - СЃРїСЂР°Р№С‚-РєРѕРЅС‚РµР№РЅРµСЂ
+//   x,y,z - РєРѕРѕСЂРґРёРЅР°С‚С‹
 function ImageSprite(src, sc, x, y, z)
 {
   var _auto_frame_count = 0;
@@ -280,10 +280,10 @@ function ImageSprite(src, sc, x, y, z)
     [function() { return _img.height * this.scale; }], 
     [ function() { return _isVisible; }, function(v) { _hide = !v; }]);
 
-  this.intPos = true;  //признак рассчета позиции спрайта в целом виде.
-  this.scale = 1;      //масштабирование размеров
-  this.frame = 0;      //номер фрейма анимации
-  this.frameWidth = 0; //0, если спрайт не анимированный, иначе - размер кадра анимации (кадры расположены горизонтально)
+  this.intPos = true;  //РїСЂРёР·РЅР°Рє СЂР°СЃСЃС‡РµС‚Р° РїРѕР·РёС†РёРё СЃРїСЂР°Р№С‚Р° РІ С†РµР»РѕРј РІРёРґРµ.
+  this.scale = 1;      //РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ СЂР°Р·РјРµСЂРѕРІ
+  this.frame = 0;      //РЅРѕРјРµСЂ С„СЂРµР№РјР° Р°РЅРёРјР°С†РёРё
+  this.frameWidth = 0; //0, РµСЃР»Рё СЃРїСЂР°Р№С‚ РЅРµ Р°РЅРёРјРёСЂРѕРІР°РЅРЅС‹Р№, РёРЅР°С‡Рµ - СЂР°Р·РјРµСЂ РєР°РґСЂР° Р°РЅРёРјР°С†РёРё (РєР°РґСЂС‹ СЂР°СЃРїРѕР»РѕР¶РµРЅС‹ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕ)
   
   this.redraw = function(dc)
   {
@@ -303,18 +303,18 @@ function ImageSprite(src, sc, x, y, z)
   } 
 }
 
-//Спрайт сложной поверхности
-//=> src_array - список путей к ресурсам поверхностей. Слои будут соответствовать порядку в массиве (сверху вниз)
-//   sc - спрайт-контейнер
-//   x,y,z - координаты
-//   w, h - размеры
+//вЂ”РїСЂР°Р№С‚ СЃР»РѕР¶РЅРѕР№ РїРѕРІРµСЂС…РЅРѕСЃС‚Рё
+//=> src_array - СЃРїРёСЃРѕРє РїСѓС‚РµР№ Рє СЂРµСЃСѓСЂСЃР°Рј РїРѕРІРµСЂС…РЅРѕСЃС‚РµР№. вЂ”Р»РѕРё Р±СѓРґСѓС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІРѕРІР°С‚СЊ РїРѕСЂВ¤РґРєСѓ РІ РјР°СЃСЃРёРІРµ (СЃРІРµСЂС…Сѓ РІРЅРёР·)
+//   sc - СЃРїСЂР°Р№С‚-РєРѕРЅС‚РµР№РЅРµСЂ
+//   x,y,z - РєРѕРѕСЂРґРёРЅР°С‚С‹
+//   w, h - СЂР°Р·РјРµСЂС‹
 function SurfaceSprite(src_array, sc, x, y, w, h, z)
 {
   var _restrictingPath;
   var _cacheCanvas = { res:null };
   var _isVisible = false;
   PropertyHelper.initializeSprite(this, sc, x, y, z, w, h, function() { return _isVisible; });
-  //Задание массива набора точек, для ограничивающего пути. С помощью данного набора можно 
+  //В«Р°РґР°РЅРёРµ РјР°СЃСЃРёРІР° РЅР°Р±РѕСЂР° С‚РѕС‡РµРє, РґР»В¤ РѕРіСЂР°РЅРёС‡РёРІР°СЋС‰РµРіРѕ РїСѓС‚Рё. вЂ” РїРѕРјРѕС‰СЊСЋ РґР°РЅРЅРѕРіРѕ РЅР°Р±РѕСЂР° РјРѕР¶РЅРѕ 
   PropertyHelper.defineSetter(this, "restrictingPath", function(v) { _restrictingPath = v; });
   this.level = -1;
 
@@ -380,8 +380,8 @@ function Message(sc, src, timeout, x, y, z)
   var _msg;
   PropertyHelper.initializeSprite(this, null, x, y, z, function(){ return _img.width; }, function(){ return _img.height; }, function() { return _isVisible; });
   
-  this.widthEffect;//Эффект анимации ширины
-  this.heightEffect;//Эффект анимации высоты
+  this.widthEffect;//РЃС„С„РµРєС‚ Р°РЅРёРјР°С†РёРё С€РёСЂРёРЅС‹
+  this.heightEffect;//РЃС„С„РµРєС‚ Р°РЅРёРјР°С†РёРё РІС‹СЃРѕС‚С‹
 
   this.redraw = function(dc)
   {
@@ -543,8 +543,8 @@ function WaterSprite(sc, x, y, w, h, z)
   
   PropertyHelper.initializeSprite(this, sc, x, y, z, w, h, true);
   this.dimpleSpeed = 0.01;
-  this.dimpleWavelength = 0.13; //длина волны для ряби в % от ширины спрайта
-  this.dimpleColors = ["#0080FF", "#296969"]; //цвета ряби
+  this.dimpleWavelength = 0.13; //РґР»РёРЅР° РІРѕР»РЅС‹ РґР»В¤ СЂВ¤Р±Рё РІ % РѕС‚ С€РёСЂРёРЅС‹ СЃРїСЂР°Р№С‚Р°
+  this.dimpleColors = ["#0080FF", "#296969"]; //С†РІРµС‚Р° СЂВ¤Р±Рё
   this.linearSpeedX = 0;
     
   this.redraw = function(dc)

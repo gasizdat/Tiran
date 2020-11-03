@@ -17,9 +17,9 @@ function Level0(game_area, money, health_pc, lifes_count, z)
   var _exit;
   var YELLOW_COLOR = "#FFDF03";
   
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //процент здоровья
-  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊСЏ
+  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
 
   this.finalize = function()
   {
@@ -87,7 +87,7 @@ function Level0(game_area, money, health_pc, lifes_count, z)
   function _onMouseDown(event)
   {
     if(_isMouseOver(_newGame, event))
-      game_area.startWithLevel(1); //по сути старт новой игры
+      game_area.startWithLevel(1); //РїРѕ СЃСѓС‚Рё СЃС‚Р°СЂС‚ РЅРѕРІРѕР№ РёРіСЂС‹
     else if(_isMouseOver(_exit, event))
       document.close();
     else if(_load && _isMouseOver(_load, event))

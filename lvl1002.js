@@ -13,9 +13,9 @@ function Level1002(game_area, money, health_pc, lifes_count, z)
   var _texts = 800;
   var _drawSimpleFlag = true;
   
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //процент здоровья
-  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊСЏ
+  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
 
   this.finalize = function()
   {
@@ -53,9 +53,9 @@ function Level1002(game_area, money, health_pc, lifes_count, z)
     {
       _drawSimpleFlag = !_drawSimpleFlag;
       if(_drawSimpleFlag)
-        game_area.msgFrame.show("Растеризуем " + _texts + " спрайтов без кэша", false, "red", 10000);
+        game_area.msgFrame.show("Р Р°СЃС‚РµСЂРёР·СѓРµРј " + _texts + " СЃРїСЂР°Р№С‚РѕРІ Р±РµР· РєСЌС€Р°", false, "red", 10000);
       else
-        game_area.msgFrame.show("Растеризуем " + _texts + " спрайтов с кэшем", false, "green", 10000);
+        game_area.msgFrame.show("Р Р°СЃС‚РµСЂРёР·СѓРµРј " + _texts + " СЃРїСЂР°Р№С‚РѕРІ СЃ РєСЌС€РµРј", false, "green", 10000);
     }
     var in_row = 13;
     var xk = dc.width / in_row;

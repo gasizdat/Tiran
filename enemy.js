@@ -5,7 +5,7 @@
  * This file is part of TIRAN game.
 */
 
-//Коллизии антогониста и протогониста
+//РљРѕР»Р»РёР·РёРё Р°РЅС‚РѕРіРѕРЅРёСЃС‚Р° Рё РїСЂРѕС‚РѕРіРѕРЅРёСЃС‚Р°
 var enemyPersCollision =
 {
   none : 0,
@@ -14,19 +14,19 @@ var enemyPersCollision =
   enemyDead : 3,
 }
 
-//Спрайт врага
-//=> src - анимированный исходник спрайта
-//   sc - контейнер спрайта
-//   surface - поверхность, на которой бегает вражина
-//   frame_width - размер одного фрейма
-//   turn_left - номер первого и последнего фрейма для разворота из положения прямо влево (null - если нет])
-//   turn_right - номер первого и последнего фрейма для разворота из положения прямо вправо (null - если нет)
-//   run_left - номер первого и последнего фрейма для движения влево (обязательно)
-//   run_right - номер первого и последнего фрейма для движения вправо (обязательно)
-//   stay - номер фрейма для остановки (обязательно)
-//   attack_left - номер первого и последнего фрейма для атаки влево (обязательно)
-//   attack_right - номер первого и последнего фрейма для атаки вправо (обязательно)
-//   z - z координата
+//РЎРїСЂР°Р№С‚ РІСЂР°РіР°
+//=> src - Р°РЅРёРјРёСЂРѕРІР°РЅРЅС‹Р№ РёСЃС…РѕРґРЅРёРє СЃРїСЂР°Р№С‚Р°
+//   sc - РєРѕРЅС‚РµР№РЅРµСЂ СЃРїСЂР°Р№С‚Р°
+//   surface - РїРѕРІРµСЂС…РЅРѕСЃС‚СЊ, РЅР° РєРѕС‚РѕСЂРѕР№ Р±РµРіР°РµС‚ РІСЂР°Р¶РёРЅР°
+//   frame_width - СЂР°Р·РјРµСЂ РѕРґРЅРѕРіРѕ С„СЂРµР№РјР°
+//   turn_left - РЅРѕРјРµСЂ РїРµСЂРІРѕРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ С„СЂРµР№РјР° РґР»СЏ СЂР°Р·РІРѕСЂРѕС‚Р° РёР· РїРѕР»РѕР¶РµРЅРёСЏ РїСЂСЏРјРѕ РІР»РµРІРѕ (null - РµСЃР»Рё РЅРµС‚])
+//   turn_right - РЅРѕРјРµСЂ РїРµСЂРІРѕРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ С„СЂРµР№РјР° РґР»СЏ СЂР°Р·РІРѕСЂРѕС‚Р° РёР· РїРѕР»РѕР¶РµРЅРёСЏ РїСЂСЏРјРѕ РІРїСЂР°РІРѕ (null - РµСЃР»Рё РЅРµС‚)
+//   run_left - РЅРѕРјРµСЂ РїРµСЂРІРѕРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ С„СЂРµР№РјР° РґР»СЏ РґРІРёР¶РµРЅРёСЏ РІР»РµРІРѕ (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)
+//   run_right - РЅРѕРјРµСЂ РїРµСЂРІРѕРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ С„СЂРµР№РјР° РґР»СЏ РґРІРёР¶РµРЅРёСЏ РІРїСЂР°РІРѕ (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)
+//   stay - РЅРѕРјРµСЂ С„СЂРµР№РјР° РґР»СЏ РѕСЃС‚Р°РЅРѕРІРєРё (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)
+//   attack_left - РЅРѕРјРµСЂ РїРµСЂРІРѕРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ С„СЂРµР№РјР° РґР»СЏ Р°С‚Р°РєРё РІР»РµРІРѕ (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)
+//   attack_right - РЅРѕРјРµСЂ РїРµСЂРІРѕРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ С„СЂРµР№РјР° РґР»СЏ Р°С‚Р°РєРё РІРїСЂР°РІРѕ (РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)
+//   z - z РєРѕРѕСЂРґРёРЅР°С‚Р°
 function EnemySprite(src, sc, surface, frame_width, turn_left, turn_right, run_left, run_right, stay, attack_left, attack_right, z)
 {
   var _states =
@@ -76,7 +76,7 @@ function EnemySprite(src, sc, surface, frame_width, turn_left, turn_right, run_l
   PropertyHelper.defineAccessors(this, "speedX", [function() { return _speed_run; }, function(s) { _speed_run = s; updateDiffs(); }]);
   PropertyHelper.defineAccessors(this, "health", [function() { return _healthPc ? _healthPc.pc : 100; }, function(h) { _health = h; updateDiffs(); }]);
   PropertyHelper.defineAccessors(this, "owningContainer", [function() { return sc; }, function(v) { if(!sc || !v) sc = v; else alert("cant' change container"); }]);
-  this.deadEffect = null; //анимационный эффект смерти
+  this.deadEffect = null; //Р°РЅРёРјР°С†РёРѕРЅРЅС‹Р№ СЌС„С„РµРєС‚ СЃРјРµСЂС‚Рё
 
   function increaseFrame()
   {
@@ -92,7 +92,7 @@ function EnemySprite(src, sc, surface, frame_width, turn_left, turn_right, run_l
   }
   function getChanceToChangeDirection(chance, directions)
   {
-    if((Math.floor(_cur_frame) % chance) == 0) //каждые chance кадров - даем шанс изменить направление
+    if((Math.floor(_cur_frame) % chance) == 0) //РєР°Р¶РґС‹Рµ chance РєР°РґСЂРѕРІ - РґР°РµРј С€Р°РЅСЃ РёР·РјРµРЅРёС‚СЊ РЅР°РїСЂР°РІР»РµРЅРёРµ
     {
       switch(checkLeftBound() ? 3 : (checkRightBound() ? 2 : Random.int(1, 4)))
       {
@@ -197,13 +197,13 @@ function EnemySprite(src, sc, surface, frame_width, turn_left, turn_right, run_l
     if(Math.abs(pers.x - _img.x + (pers.width - _img.width) / 2) <= 30)
     {
       var dy = pers.y + pers.height - _img.y;
-      if(dy > 0 && pers.y < (_img.y + _img.height)) //начинается баттл
+      if(dy > 0 && pers.y < (_img.y + _img.height)) //РЅР°С‡РёРЅР°РµС‚СЃСЏ Р±Р°С‚С‚Р»
       {
-        if(dy <= _img.height / 3) //дали по башке прям
+        if(dy <= _img.height / 3) //РґР°Р»Рё РїРѕ Р±Р°С€РєРµ РїСЂСЏРј
           _health -= 1;
-        else if(dy <= _img.height / 2) // дябнули в спину
+        else if(dy <= _img.height / 2) // РґСЏР±РЅСѓР»Рё РІ СЃРїРёРЅСѓ
           _health -= 0.2;
-        else //вражина нас затоптал
+        else //РІСЂР°Р¶РёРЅР° РЅР°СЃ Р·Р°С‚РѕРїС‚Р°Р»
         {
           switch(_state)
           {

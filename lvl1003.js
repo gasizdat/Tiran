@@ -14,9 +14,9 @@ function Level1003(game_area, money, health_pc, lifes_count, z)
   var _vSpace = 70;
   var _vLevels = 10;
   
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //процент здоровья
-  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineAccessors(this, "healthPc", [function() { return health_pc; }, function(v) { health_pc = v; }]); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊВ¤
+  PropertyHelper.defineAccessors(this, "lifes", [function() { return lifes_count; }, function(v) { lifes_count = v; }]); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
 
   this.finalize = function()
   {
@@ -30,9 +30,9 @@ function Level1003(game_area, money, health_pc, lifes_count, z)
     if(!game_area.msgFrame.visible)
     {
       if(_integralCoord )
-        game_area.msgFrame.show("Целые координаты", false, "green", 10000);
+        game_area.msgFrame.show("Г·РµР»С‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹", false, "green", 10000);
       else
-        game_area.msgFrame.show("Дробные координаты", false, "red", 10000);
+        game_area.msgFrame.show("Ж’СЂРѕР±РЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹", false, "red", 10000);
 
       for(var i = 0; i < _enemies.length; i++)
         delete _enemies.sprite(i);

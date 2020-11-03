@@ -97,12 +97,12 @@ var PropertyHelper =
     {
       if(!sprite.effects)
       {
-        //добавляем фиктивный эффект перерисовки спрайта
+        //РґРѕР±Р°РІР»СЏРµРј С„РёРєС‚РёРІРЅС‹Р№ СЌС„С„РµРєС‚ РїРµСЂРµСЂРёСЃРѕРІРєРё СЃРїСЂР°Р№С‚Р°
         var sprite_redraw_effect = sprite.redraw;
         sprite.effects = [sprite_redraw_effect.call.bind(sprite_redraw_effect)];
       }
       sprite.effects.push(e);
-      //важно, чтобы фиктивный эффект перерисовки оставался последним
+      //РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ С„РёРєС‚РёРІРЅС‹Р№ СЌС„С„РµРєС‚ РїРµСЂРµСЂРёСЃРѕРІРєРё РѕСЃС‚Р°РІР°Р»СЃСЏ РїРѕСЃР»РµРґРЅРёРј
       var e = sprite.effects[sprite.effects.length - 1];
       sprite.effects[sprite.effects.length - 1] = sprite.effects[sprite.effects.length - 2];
       sprite.effects[sprite.effects.length - 2] = e;
@@ -118,7 +118,7 @@ var DebugHelper =
 {
   redrawOrder : 0,
   showSpriteBounds : false,
-  showSpriteRedrawOrder : false, //только совместно с showSpriteBounds
+  showSpriteRedrawOrder : false, //С‚РѕР»СЊРєРѕ СЃРѕРІРјРµСЃС‚РЅРѕ СЃ showSpriteBounds
   showMouseChoords : false,
 }
 
@@ -151,7 +151,7 @@ function DrawContext(canvas)
   Object.freeze(this);
 }
 
-//Кэш ресурсов
+//РљСЌС€ СЂРµСЃСѓСЂСЃРѕРІ
 function ResourceCache()
 {
   var imgs = new Object();
@@ -234,7 +234,7 @@ function ResourceCache()
   }
 }
 
-//© http://www.astral-consultancy.co.uk/cgi-bin/hunbug/doco.cgi?11180
+//В© http://www.astral-consultancy.co.uk/cgi-bin/hunbug/doco.cgi?11180
 var CookieHelper =
 {
   getCookie : function( name ) 

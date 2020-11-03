@@ -125,24 +125,24 @@ function Level3Portal(game_area, wb_src, sc, x, y, z)
   
   function _getPossibleMoveTarget(wb)
   {
-    if(wb)//проверяем куды можем сдвинуть
+    if(wb)//РїСЂРѕРІРµСЂСЏРµРј РєСѓРґС‹ РјРѕР¶РµРј СЃРґРІРёРЅСѓС‚СЊ
     {       
-      var new_x = wb.x + wb.width + 1; //вправо?
+      var new_x = wb.x + wb.width + 1; //РІРїСЂР°РІРѕ?
       if(new_x < (x + _width) && !_getWaterBox(new_x, wb.y + 1))
         return _moveTargets.right;
       else
       {
-        new_x = wb.x - 1; //влево?
+        new_x = wb.x - 1; //РІР»РµРІРѕ?
         if(new_x > (x + wb.width + _inputPipeDx) && !_getWaterBox(new_x, wb.y + 1))
           return _moveTargets.left;
         else
         {
-          var new_y = wb.y + wb.height + 1; //вниз?
+          var new_y = wb.y + wb.height + 1; //РІРЅРёР·?
           if(new_y <= (y + _height)  && !_getWaterBox(wb.x + 1, new_y))
             return _moveTargets.down;
           else
           {
-            new_y = wb.y - 1; //вверх?
+            new_y = wb.y - 1; //РІРІРµСЂС…?
             if(new_y > y && !_getWaterBox(wb.x + 1, new_y))
               return _moveTargets.up;
           }
@@ -223,7 +223,7 @@ function Level3Portal(game_area, wb_src, sc, x, y, z)
 
     for(var i = 0; i < 2; i++)
     {
-      //рисуем источник
+      //СЂРёСЃСѓРµРј РёСЃС‚РѕС‡РЅРёРє
       dc.context.beginPath();
       dc.context.moveTo(local_x, this.y + _height);
       if(i == 0)
@@ -243,7 +243,7 @@ function Level3Portal(game_area, wb_src, sc, x, y, z)
       dc.context.lineTo(source_point.x, source_point.y);
       dc.context.stroke();
       dc.context.beginPath();
-      //рисуем приемник
+      //СЂРёСЃСѓРµРј РїСЂРёРµРјРЅРёРє
       dc.context.moveTo(target_point.x, target_point.y);
       if(i != 0)
         dc.context.strokeStyle = _completed ? water_flow : typical_wb.emptyColor;
@@ -262,14 +262,14 @@ function Level3Portal(game_area, wb_src, sc, x, y, z)
   {
     var img = Cache.getImage(wb_src);
     var show_index = game_area.skill <= GAME_LEVEL.beginner;
-    //первый ряд
+    //РїРµСЂРІС‹Р№ СЂСЏРґ
     _waterBoxArray.push(new WaterBox(null, wb_src, 1, {x:0, y:40}, {x:img.width, y:40}, show_index));
     _waterBoxArray.push(new WaterBox(null, wb_src, 2, {x:0, y:40}, {x:img.width * 3 / 4, y:img.height}, show_index));
-    //второй ряд
+    //РІС‚РѕСЂРѕР№ СЂСЏРґ
     _waterBoxArray.push(new WaterBox(null, wb_src, 4, {x:img.width, y:img.height * 2 / 3}, {x:img.width / 2, y:img.height}, show_index));
     _waterBoxArray.push(new WaterBox(null, wb_src, 5, {x:img.width * 3 / 4, y:0}, {x:0, y:img.height * 2 / 3}, show_index));
     _waterBoxArray.push(new WaterBox(null, wb_src, 6, {x:img.width * 2 / 3, y:img.height}, {x:img.width, y:img.height / 2}, show_index));
-    //третий ряд
+    //С‚СЂРµС‚РёР№ СЂСЏРґ
     _waterBoxArray.push(new WaterBox(null, wb_src, 7, {x:img.width / 2, y:0}, {x:img.width, y:img.height * 5 / 8}, show_index));
     _waterBoxArray.push(new WaterBox(null, wb_src, 8, {x:0, y:img.height * 5 / 8}, {x:img.width, y:img.height * 5 / 8}, show_index));
     _waterBoxArray.push(new WaterBox(null, wb_src, 9, {x:0, y:img.height * 5 / 8}, {x:img.width * 2 / 3, y:0}, show_index));
@@ -282,8 +282,8 @@ function Level3Portal(game_area, wb_src, sc, x, y, z)
     _width = img.width * 3 + _inputPipeDx;
     _height = img.height * 3;
     
-    //перемешивать нужно по чеснаку (т.е. сдвигать в возможных направлениях, но не переставлять),
-    //иначе - можно получить нерешаемую комбинацию (http://ru.wikipedia.org/wiki/Пятнашки)
+    //РїРµСЂРµРјРµС€РёРІР°С‚СЊ РЅСѓР¶РЅРѕ РїРѕ С‡РµСЃРЅР°РєСѓ (С‚.Рµ. СЃРґРІРёРіР°С‚СЊ РІ РІРѕР·РјРѕР¶РЅС‹С… РЅР°РїСЂР°РІР»РµРЅРёСЏС…, РЅРѕ РЅРµ РїРµСЂРµСЃС‚Р°РІР»СЏС‚СЊ),
+    //РёРЅР°С‡Рµ - РјРѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РЅРµСЂРµС€Р°РµРјСѓСЋ РєРѕРјР±РёРЅР°С†РёСЋ (http://ru.wikipedia.org/wiki/РџСЏС‚РЅР°С€РєРё)
     var moves = [];
     for(var i = Random.int(107, 233),
         iter_count = Math.ceil(5 * game_area.skill * game_area.skill); iter_count; i++)

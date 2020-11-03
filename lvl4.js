@@ -9,14 +9,14 @@ function Level4(game_area, money, health_pc, lifes_count, z)
   var _image_source_array = ["bricks01.png", "face02.png", "run.png", "spinning_coin_gold02.png", "spinning_ruby01.png", "enemy01.png", 
                              "enemy02.png", "rock04.jpg", "rock05.jpg", "ground03.png", "waterbox.jpg", "health01.png", "water01.jpg"];
   var _water;
-  var _pers; //протогонист
-  var _rndSrfc; //рельеф поверхности карты
-  var _backGround; //фон интерьеров замка
+  var _pers; //РїСЂРѕС‚РѕРіРѕРЅРёСЃС‚
+  var _rndSrfc; //СЂРµР»СЊРµС„ РїРѕРІРµСЂС…РЅРѕСЃС‚Рё РєР°СЂС‚С‹
+  var _backGround; //С„РѕРЅ РёРЅС‚РµСЂСЊРµСЂРѕРІ Р·Р°РјРєР°
   var _sprites = new SpriteContainer(game_area.spriteContainer, z);
   var _exitPortal;
   var _exitGate;
   var _enemyRespawnBase;
-  var _respawnEnemyInterval = 15; //время появления нового врага
+  var _respawnEnemyInterval = 15; //РІСЂРµРјСЏ РїРѕСЏРІР»РµРЅРёСЏ РЅРѕРІРѕРіРѕ РІСЂР°РіР°
   var _addEnemyTime;
   var _surfAdditionState = 0;
   var _deadEnemiesCount = 0;
@@ -35,9 +35,9 @@ function Level4(game_area, money, health_pc, lifes_count, z)
   var _waterTransparency = 0.5;
 
   
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineGetter(this, "healthPc", function() { return _pers.healthPc; }); //процент здоровья
-  PropertyHelper.defineGetter(this, "lifes", function() { return _pers.lifeCount; }); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineGetter(this, "healthPc", function() { return _pers.healthPc; }); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊСЏ
+  PropertyHelper.defineGetter(this, "lifes", function() { return _pers.lifeCount; }); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
   
   this.finalize = function()
   {
@@ -106,10 +106,10 @@ function Level4(game_area, money, health_pc, lifes_count, z)
     
   function _fakeGroundProcessor(dc)
   {
-    _fakeGround.x = (dc.width - _fakeGround.width)/2; //фиксируем фейковую поверхность по горизонтали
+    _fakeGround.x = (dc.width - _fakeGround.width)/2; //С„РёРєСЃРёСЂСѓРµРј С„РµР№РєРѕРІСѓСЋ РїРѕРІРµСЂС…РЅРѕСЃС‚СЊ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
     var dy;
     if(!_pers.speedX)
-      dy = 0.5; //тонет, если не бултыхается
+      dy = 0.5; //С‚РѕРЅРµС‚, РµСЃР»Рё РЅРµ Р±СѓР»С‚С‹С…Р°РµС‚СЃСЏ
     else
       dy = (_lastMouseY - _pers.y - (_pers.height / 2)) / 70;
 
@@ -370,13 +370,13 @@ function Level4(game_area, money, health_pc, lifes_count, z)
           var src = new ImageSprite("spinning_coin_gold02.png");
           src.addEffect(VisualEffects.parametric("frame", Controllers.cyclic(0, 0, src.width / 32, 0.15)));
           src.frameWidth = 32;
-          supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.coin, 1);//грош
+          supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.coin, 1);//РіСЂРѕС€
         }
         else
         {
           health_count--;
           var src = new ImageSprite("health01.png");
-          supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.health, Random.int(10, 50));//здоровье +(10..50)%
+          supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.health, Random.int(10, 50));//Р·РґРѕСЂРѕРІСЊРµ +(10..50)%
         }
       }
       supply_sprite.x = props.x + props.w + Random.int(15, _lastFreeSpace - 15);
@@ -394,7 +394,7 @@ function Level4(game_area, money, health_pc, lifes_count, z)
   {
     game_area.msgFrame.show(StringResources.SOLVE_4_EXIT, true, "blue", 5000);
     var src = Cache.getImage("ground03.png");
-    props.x += props.w - 20; //чтобы немного перекрывался
+    props.x += props.w - 20; //С‡С‚РѕР±С‹ РЅРµРјРЅРѕРіРѕ РїРµСЂРµРєСЂС‹РІР°Р»СЃСЏ
     props.y = game_area.drawContext.height - src.height;
     props.w = game_area.drawContext.width/2;
     props.h = src.height;
@@ -408,7 +408,7 @@ function Level4(game_area, money, health_pc, lifes_count, z)
       _exitPortal.y = props.rock.y - _exitPortal.height;
     }
     _rndSrfc.employEnemy(_getEnemy(new levelDescription(_rndSrfc.surfDipping, _enemyRespawnBase)));
-    _addEnemyTime = (new Number(new Date())) + _respawnEnemyInterval*1000; //новый враг через 15 сек
+    _addEnemyTime = (new Number(new Date())) + _respawnEnemyInterval*1000; //РЅРѕРІС‹Р№ РІСЂР°Рі С‡РµСЂРµР· 15 СЃРµРє
   }
   
   function _onSurfaceAddEventHandler(sender, props)

@@ -8,26 +8,26 @@ function Level3(game_area, money, health_pc, lifes_count, z)
 {
   var _image_source_array = ["bg03.jpg", "face02.png", "run.png", "spinning_coin_gold02.png", "spinning_ruby01.png", "enemy02.png", 
                              "enemy04.png", "bat01.png", "bat02.png", "rock04.jpg", "rock05.jpg", "ground03.png", "waterbox.jpg", "health01.png"];
-  var _pers; //протогонист
-  var _rndSrfc; //рельеф поверхности карты
-  var _backGround; //фон интерьеров замка
-  var _bats; //случайные летучие мыши
+  var _pers; //РїСЂРѕС‚РѕРіРѕРЅРёСЃС‚
+  var _rndSrfc; //СЂРµР»СЊРµС„ РїРѕРІРµСЂС…РЅРѕСЃС‚Рё РєР°СЂС‚С‹
+  var _backGround; //С„РѕРЅ РёРЅС‚РµСЂСЊРµСЂРѕРІ Р·Р°РјРєР°
+  var _bats; //СЃР»СѓС‡Р°Р№РЅС‹Рµ Р»РµС‚СѓС‡РёРµ РјС‹С€Рё
   var _sprites = new SpriteContainer(game_area.spriteContainer, z);
   var _exitPortal;
   var _exitGate;
   var _enemyRespawnBase;
-  var _respawnEnemyInterval = 15; //время появления нового врага
+  var _respawnEnemyInterval = 15; //РІСЂРµРјСЏ РїРѕСЏРІР»РµРЅРёСЏ РЅРѕРІРѕРіРѕ РІСЂР°РіР°
   var _addEnemyTime;
   var _surfAdditionState = 0;
-  var _sinkingLevels = []; //уровни, которые могут тонуть
+  var _sinkingLevels = []; //СѓСЂРѕРІРЅРё, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ С‚РѕРЅСѓС‚СЊ
   var _curSinkingLevelIndex = null;
   var _deadEnemiesCount = 0;
   var _rocksSources = ["rock04.jpg", "rock05.jpg"];
   var _healthBuyQuerySupply;
   
-  PropertyHelper.defineGetter(this, "money", function() { return money; }); //число честно заработанных денег
-  PropertyHelper.defineGetter(this, "healthPc", function() { return _pers.healthPc; }); //процент здоровья
-  PropertyHelper.defineGetter(this, "lifes", function() { return _pers.lifeCount; }); //число жизней
+  PropertyHelper.defineGetter(this, "money", function() { return money; }); //С‡РёСЃР»Рѕ С‡РµСЃС‚РЅРѕ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹С… РґРµРЅРµРі
+  PropertyHelper.defineGetter(this, "healthPc", function() { return _pers.healthPc; }); //РїСЂРѕС†РµРЅС‚ Р·РґРѕСЂРѕРІСЊСЏ
+  PropertyHelper.defineGetter(this, "lifes", function() { return _pers.lifeCount; }); //С‡РёСЃР»Рѕ Р¶РёР·РЅРµР№
   
   this.finalize = function()
   {
@@ -200,15 +200,15 @@ function Level3(game_area, money, health_pc, lifes_count, z)
       if(_pers.lifeCount > 1 && _pers.currentGroundLevel && !(_exitPortal && _exitPortal.isCompleted))
       {
         game_area.msgFrame.show(StringResources.PERS_BREAK, true, "green");
-        for(var i = 0; i < _sinkingLevels.length; i++) //поднимаем все утонувшие уровни обратно
+        for(var i = 0; i < _sinkingLevels.length; i++) //РїРѕРґРЅРёРјР°РµРј РІСЃРµ СѓС‚РѕРЅСѓРІС€РёРµ СѓСЂРѕРІРЅРё РѕР±СЂР°С‚РЅРѕ
           _sinkingLevels[i].sprite.y = _sinkingLevels[i].y;
         _pers.speedX = 0;
         _pers.y = 0;
         _pers.jumpLevel = -1;
         _pers.reduceLife(_pers.healthPc);
         _rndSrfc.linearSpeedX = (dc.width - _pers.currentGroundLevel.sprite.width) / 2 - _pers.currentGroundLevel.sprite.x;
-        //от рекусии нас спасает то, что условие if(_pers.y > dc.height) уже не сработает, т.к. поменяли у координату перса
-        // Хорошее ли это решение? Нет. Работает ли оно? Да!
+        //РѕС‚ СЂРµРєСѓСЃРёРё РЅР°СЃ СЃРїР°СЃР°РµС‚ С‚Рѕ, С‡С‚Рѕ СѓСЃР»РѕРІРёРµ if(_pers.y > dc.height) СѓР¶Рµ РЅРµ СЃСЂР°Р±РѕС‚Р°РµС‚, С‚.Рє. РїРѕРјРµРЅСЏР»Рё Сѓ РєРѕРѕСЂРґРёРЅР°С‚Сѓ РїРµСЂСЃР°
+        // РҐРѕСЂРѕС€РµРµ Р»Рё СЌС‚Рѕ СЂРµС€РµРЅРёРµ? РќРµС‚. Р Р°Р±РѕС‚Р°РµС‚ Р»Рё РѕРЅРѕ? Р”Р°!
         _sprites.redraw(dc); 
         _rndSrfc.linearSpeedX = 0;
       }
@@ -258,7 +258,7 @@ function Level3(game_area, money, health_pc, lifes_count, z)
     
     if(Random.chance(0.33 * game_area.skill))
     {
-    //так делать не нужно, ибо при каждом обращении к y мы будем получать разные значения
+    //С‚Р°Рє РґРµР»Р°С‚СЊ РЅРµ РЅСѓР¶РЅРѕ, РёР±Рѕ РїСЂРё РєР°Р¶РґРѕРј РѕР±СЂР°С‰РµРЅРёРё Рє y РјС‹ Р±СѓРґРµРј РїРѕР»СѓС‡Р°С‚СЊ СЂР°Р·РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 /*      props.rock = new SurfaceSprite([_rocksSources[Random.int(0, _rocksSources.length)]], null, props.x, 
         Controllers.waving(props.y, props.y - 50 * game_area.skill, props.y + 30, Random.real(0.1, 0.3)) , props.w, props.h);*/
       props.rock = new SurfaceSprite([_rocksSources[Random.int(0, _rocksSources.length)]], null, props.x, props.y, props.w, props.h);
@@ -273,7 +273,7 @@ function Level3(game_area, money, health_pc, lifes_count, z)
 
     if(props.rock.height > 20)
     {
-      //Делаем высокие скалы неровными снизу
+      //Р”РµР»Р°РµРј РІС‹СЃРѕРєРёРµ СЃРєР°Р»С‹ РЅРµСЂРѕРІРЅС‹РјРё СЃРЅРёР·Сѓ
       var rp = [];
       rp.push({x:0, y:0});
       rp.push({x:0, y:props.h});
@@ -303,12 +303,12 @@ function Level3(game_area, money, health_pc, lifes_count, z)
           var src = new ImageSprite("spinning_coin_gold02.png");
           src.addEffect(VisualEffects.parametric("frame", Controllers.cyclic(0, 0, src.width / 32, 0.15)));
           src.frameWidth = 32;
-          supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.coin, 1);//грош
+          supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.coin, 1);//РіСЂРѕС€
         }
         else
         {
           var src = new ImageSprite("health01.png");
-          supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.health, Random.int(10, 50));//здоровье +(10..50)%
+          supply_sprite = new SupplySprite(src, null, SUPPLY_TYPE.health, Random.int(10, 50));//Р·РґРѕСЂРѕРІСЊРµ +(10..50)%
         }
       }
       supply_sprite.x = props.x + Random.int(5, props.w - 10);
@@ -324,7 +324,7 @@ function Level3(game_area, money, health_pc, lifes_count, z)
   {
     game_area.msgFrame.show(StringResources.SOLVE_4_EXIT, true, "blue", 5000);
     var src = Cache.getImage("ground03.png");
-    props.x += props.w - 20; //чтобы немного перекрывался
+    props.x += props.w - 20; //С‡С‚РѕР±С‹ РЅРµРјРЅРѕРіРѕ РїРµСЂРµРєСЂС‹РІР°Р»СЃСЏ
     props.y = game_area.drawContext.height - src.height;
     props.w = game_area.drawContext.width/2;
     props.h = src.height;
@@ -338,7 +338,7 @@ function Level3(game_area, money, health_pc, lifes_count, z)
       _exitPortal.y = props.rock.y - _exitPortal.height;
     }
     _rndSrfc.employEnemy(_getEnemy(new levelDescription(_rndSrfc.surfDipping, _enemyRespawnBase)));
-    _addEnemyTime = (new Number(new Date())) + _respawnEnemyInterval*1000; //новый враг через 15 сек
+    _addEnemyTime = (new Number(new Date())) + _respawnEnemyInterval*1000; //РЅРѕРІС‹Р№ РІСЂР°Рі С‡РµСЂРµР· 15 СЃРµРє
   }
   
   function _onSurfaceAddEventHandler(sender, props)

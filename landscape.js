@@ -5,12 +5,12 @@
  * This file is part of TIRAN game.
 */
 
-//случайный ландшафт
-//=> sc - родительский спрайт-контейнер, 
-//   y - координата, 
-//   rock_z - z-координата скал,
-//   plant_z- z-координата травки, деревьев и др. растений,
-//   supplies_z - z-координата разных припасов: монет, звезд, здоровья и т.д.
+//СЃР»СѓС‡Р°Р№РЅС‹Р№ Р»Р°РЅРґС€Р°С„С‚
+//=> sc - СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ СЃРїСЂР°Р№С‚-РєРѕРЅС‚РµР№РЅРµСЂ, 
+//   y - РєРѕРѕСЂРґРёРЅР°С‚Р°, 
+//   rock_z - z-РєРѕРѕСЂРґРёРЅР°С‚Р° СЃРєР°Р»,
+//   plant_z- z-РєРѕРѕСЂРґРёРЅР°С‚Р° С‚СЂР°РІРєРё, РґРµСЂРµРІСЊРµРІ Рё РґСЂ. СЂР°СЃС‚РµРЅРёР№,
+//   supplies_z - z-РєРѕРѕСЂРґРёРЅР°С‚Р° СЂР°Р·РЅС‹С… РїСЂРёРїР°СЃРѕРІ: РјРѕРЅРµС‚, Р·РІРµР·Рґ, Р·РґРѕСЂРѕРІСЊВ¤ Рё С‚.Рґ.
 function RandomLandscape(sc, y, rock_z, plant_z, supplies_z)
 {  
   var _lastItem;
@@ -39,27 +39,27 @@ function RandomLandscape(sc, y, rock_z, plant_z, supplies_z)
   
   _lastItem = _movProcessor;
   
-  //Линейная скросоть ландшафта
+  //Р‹РёРЅРµР№РЅР°В¤ СЃРєСЂРѕСЃРѕС‚СЊ Р»Р°РЅРґС€Р°С„С‚Р°
   PropertyHelper.defineSetter(this, "linearSpeedX", function(ls) { _linearSpeedX = ls; });
   PropertyHelper.defineSetter(this, "linearSpeedY", function(ls) { _linearSpeedY = ls; });  
-  //Минимальное число уровней поверхности
+  //С›РёРЅРёРјР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ СѓСЂРѕРІРЅРµР№ РїРѕРІРµСЂС…РЅРѕСЃС‚Рё
   PropertyHelper.defineAccessors(this, "minLevels", [function() { return _minLevels; }, function(v){ _minLevels = v; }]);
-  //максимальное число уровней поверхности
+  //РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ СѓСЂРѕРІРЅРµР№ РїРѕРІРµСЂС…РЅРѕСЃС‚Рё
   PropertyHelper.defineAccessors(this, "maxLevels", [function() { return _maxLevels; }, function(v){ _maxLevels = v; }]);
-  //гистерезис определения барьеров
+  //РіРёСЃС‚РµСЂРµР·РёСЃ РѕРїСЂРµРґРµР»РµРЅРёВ¤ Р±Р°СЂСЊРµСЂРѕРІ
   this.barrierHysteresis = 5;
-  //Величина погружения в почву
+  //В¬РµР»РёС‡РёРЅР° РїРѕРіСЂСѓР¶РµРЅРёВ¤ РІ РїРѕС‡РІСѓ
   PropertyHelper.defineAccessors(this, "surfDipping", [function() { return _surfDipping; }, function(v){ _surfDipping = v; }]);
-  //минимальная ширина поверхности.
+  //РјРёРЅРёРјР°Р»СЊРЅР°В¤ С€РёСЂРёРЅР° РїРѕРІРµСЂС…РЅРѕСЃС‚Рё.
   PropertyHelper.defineAccessors(this, "minWidth", [function() { return _minWidth; }, function(v){ _minWidth = v; }]);
-  //Последний добавленный surface
+  //С•РѕСЃР»РµРґРЅРёР№ РґРѕР±Р°РІР»РµРЅРЅС‹Р№ surface
   PropertyHelper.defineGetter(this, "lastSurface", function() { return _lastItem; });
-  //событие, возникающее при добавлении очередного спрайта поверхности в него передается sender - указатель на текущий RandomLandscape
-  //и кортеж, {rock, grass, tree, supply, enemy, level, x, y, w, h} в котором при желании можно заменить:
-  //tree, supply - массивами, типа ImageSprite
-  //enemy - массивом, типа EnemySprite
-  //rock, grass - объектами, типа SurfaceSprite
-  //level, x, y, w, h - литералами 
+  //СЃРѕР±С‹С‚РёРµ, РІРѕР·РЅРёРєР°СЋС‰РµРµ РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РѕС‡РµСЂРµРґРЅРѕРіРѕ СЃРїСЂР°Р№С‚Р° РїРѕРІРµСЂС…РЅРѕСЃС‚Рё РІ РЅРµРіРѕ РїРµСЂРµРґР°РµС‚СЃВ¤ sender - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С‚РµРєСѓС‰РёР№ RandomLandscape
+  //Рё РєРѕСЂС‚РµР¶, {rock, grass, tree, supply, enemy, level, x, y, w, h} РІ РєРѕС‚РѕСЂРѕРј РїСЂРё Р¶РµР»Р°РЅРёРё РјРѕР¶РЅРѕ Р·Р°РјРµРЅРёС‚СЊ:
+  //tree, supply - РјР°СЃСЃРёРІР°РјРё, С‚РёРїР° ImageSprite
+  //enemy - РјР°СЃСЃРёРІРѕРј, С‚РёРїР° EnemySprite
+  //rock, grass - РѕР±СЉРµРєС‚Р°РјРё, С‚РёРїР° SurfaceSprite
+  //level, x, y, w, h - Р»РёС‚РµСЂР°Р»Р°РјРё 
   PropertyHelper.defineAccessors(this, "onSurfAdded", [function() { return _onSurfAdded; }, function(v){ _onSurfAdded = v; getNewItem(); }]);
   
   function getLevelsCount()
@@ -177,7 +177,7 @@ function RandomLandscape(sc, y, rock_z, plant_z, supplies_z)
     }
   }
   
-  //Проверить наличие барьера справа
+  //С•СЂРѕРІРµСЂРёС‚СЊ РЅР°Р»РёС‡РёРµ Р±Р°СЂСЊРµСЂР° СЃРїСЂР°РІР°
   this.checkRightBarrier = function(sprite)
   {
     var pvt_x = sprite.x + sprite.width + this.barrierHysteresis;
@@ -194,7 +194,7 @@ function RandomLandscape(sc, y, rock_z, plant_z, supplies_z)
     return false;
   }
   
-  //Проверить наличие барьера слева
+  //С•СЂРѕРІРµСЂРёС‚СЊ РЅР°Р»РёС‡РёРµ Р±Р°СЂСЊРµСЂР° СЃР»РµРІР°
   this.checkLeftBarrier = function(sprite)
   {
     var pvt_x = sprite.x - this.barrierHysteresis;
@@ -211,7 +211,7 @@ function RandomLandscape(sc, y, rock_z, plant_z, supplies_z)
     return false;
   }
   
-  //Проверить можем ли мы подобрать припас
+  //С•СЂРѕРІРµСЂРёС‚СЊ РјРѕР¶РµРј Р»Рё РјС‹ РїРѕРґРѕР±СЂР°С‚СЊ РїСЂРёРїР°СЃ
   this.checkSuppliesGathering = function(sprite)
   {
     var ret;
@@ -230,7 +230,7 @@ function RandomLandscape(sc, y, rock_z, plant_z, supplies_z)
     return ret;
   }
 
-  //Подобрать припас
+  //С•РѕРґРѕР±СЂР°С‚СЊ РїСЂРёРїР°СЃ
   this.gatherSupply = function(supply)
   {
     for(var i = 0; i < _visibleSupplies.length; i++)

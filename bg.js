@@ -4,7 +4,7 @@
  *  Game project at: http://code.google.com/p/tiran/
  * This file is part of TIRAN game.
 */
-function RandomBackground(img_set, sc, x, y, w, h, z, scale_rnd, x_rnd, y_rnd) //параллаксный фон со случайными мутациями
+function RandomBackground(img_set, sc, x, y, w, h, z, scale_rnd, x_rnd, y_rnd) //РїР°СЂР°Р»Р»Р°РєСЃРЅС‹Р№ С„РѕРЅ СЃРѕ СЃР»СѓС‡Р°Р№РЅС‹РјРё РјСѓС‚Р°С†РёСЏРјРё
 {
   PropertyHelper.initializeSprite(this, null, x, y, z, w, h, true);
 
@@ -38,14 +38,14 @@ function RandomBackground(img_set, sc, x, y, w, h, z, scale_rnd, x_rnd, y_rnd) /
         s.x += dx;
         if(dx < 0)
         {
-          if((s.x + s.width) < (x + 20)) //двигаем влево и убежало за левый край
+          if((s.x + s.width) < (x + 20)) //РґРІРёРіР°РµРј РІР»РµРІРѕ Рё СѓР±РµР¶Р°Р»Рѕ Р·Р° Р»РµРІС‹Р№ РєСЂР°Р№
           {
             s.scale = scale_rnd(s);
             s.x = x + w + x_rnd(s);
             s.y = y_rnd(s);
           }
         }
-        else if(s.x > (x + w + 20)) //иначе - двигаем вправо и убежало за левый край
+        else if(s.x > (x + w + 20)) //РёРЅР°С‡Рµ - РґРІРёРіР°РµРј РІРїСЂР°РІРѕ Рё СѓР±РµР¶Р°Р»Рѕ Р·Р° Р»РµРІС‹Р№ РєСЂР°Р№
         {
           s.scale = scale_rnd(s);
           s.y = y_rnd(s);
@@ -64,7 +64,7 @@ function RandomBackground(img_set, sc, x, y, w, h, z, scale_rnd, x_rnd, y_rnd) /
   }
 }
 
-function RepeatedBackground(img_src, sc, x, y, w, h, fract_pos, z) //горизонтальный фон
+function RepeatedBackground(img_src, sc, x, y, w, h, fract_pos, z) //РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№ С„РѕРЅ
 {
   var _linearSpeedX = 0;
   var _linearSpeedY = 0;
@@ -75,8 +75,8 @@ function RepeatedBackground(img_src, sc, x, y, w, h, fract_pos, z) //горизонталь
   PropertyHelper.initializeSprite(this, sc, x, y, z, w, h, true);
   PropertyHelper.defineSetter(this, "linearSpeedX", function(v) { _linearSpeedX = v; });
   PropertyHelper.defineSetter(this, "linearSpeedY", function(v) { _linearSpeedY = v; });
-  this.repeatByX = true; //повторять фон по оси Х 
-  this.repeatByY = true; //повторять фон по оси Y
+  this.repeatByX = true; //РїРѕРІС‚РѕСЂСЏС‚СЊ С„РѕРЅ РїРѕ РѕСЃРё РҐ 
+  this.repeatByY = true; //РїРѕРІС‚РѕСЂСЏС‚СЊ С„РѕРЅ РїРѕ РѕСЃРё Y
 
   z = 1;
   var img = Cache.getImage(img_src);
@@ -98,7 +98,7 @@ function RepeatedBackground(img_src, sc, x, y, w, h, fract_pos, z) //горизонталь
   {
     if(!this.visible)
       return;
-  //TODO следует переписать оптимальнее
+  //TODO СЃР»РµРґСѓРµС‚ РїРµСЂРµРїРёСЃР°С‚СЊ РѕРїС‚РёРјР°Р»СЊРЅРµРµ
     for(var i = 0; i < _sprites.length; i++)
     {
       var s  = _sprites.sprite(i);
@@ -112,7 +112,7 @@ function RepeatedBackground(img_src, sc, x, y, w, h, fract_pos, z) //горизонталь
         var s  = _sprites.sprite(i);
         if(_linearSpeedX < 0)
         {
-          if((s.x + s.width) <= this.x) //движение вправо и убежало за левый край - передвинуть колонку вправо
+          if((s.x + s.width) <= this.x) //РґРІРёР¶РµРЅРёРµ РІРїСЂР°РІРѕ Рё СѓР±РµР¶Р°Р»Рѕ Р·Р° Р»РµРІС‹Р№ РєСЂР°Р№ - РїРµСЂРµРґРІРёРЅСѓС‚СЊ РєРѕР»РѕРЅРєСѓ РІРїСЂР°РІРѕ
           {
             var col = (i + _columns - 1) % _columns;
             for(var j = 0; j < _rows; j++)
@@ -124,7 +124,7 @@ function RepeatedBackground(img_src, sc, x, y, w, h, fract_pos, z) //горизонталь
             break;
           }
         }
-        else if(s.x > (this.x + this.width)) //иначе - движение влево и убежало за правый край
+        else if(s.x > (this.x + this.width)) //РёРЅР°С‡Рµ - РґРІРёР¶РµРЅРёРµ РІР»РµРІРѕ Рё СѓР±РµР¶Р°Р»Рѕ Р·Р° РїСЂР°РІС‹Р№ РєСЂР°Р№
         {
           var col = (i + 1) % _columns;
           for(var j = 0; j < _rows; j++)
@@ -146,7 +146,7 @@ function RepeatedBackground(img_src, sc, x, y, w, h, fract_pos, z) //горизонталь
         var s  = _sprites.sprite(i*_columns);
         if(_linearSpeedY < 0)
         {
-          if((s.y + s.height) <= this.y) //движение вниз и убежало за верхний край - передвинуть ряд вниз
+          if((s.y + s.height) <= this.y) //РґРІРёР¶РµРЅРёРµ РІРЅРёР· Рё СѓР±РµР¶Р°Р»Рѕ Р·Р° РІРµСЂС…РЅРёР№ РєСЂР°Р№ - РїРµСЂРµРґРІРёРЅСѓС‚СЊ СЂСЏРґ РІРЅРёР·
           {
             var row = (i + _rows - 1) % _rows;
             for(var j = 0; j < _columns; j++)
@@ -158,7 +158,7 @@ function RepeatedBackground(img_src, sc, x, y, w, h, fract_pos, z) //горизонталь
             break;
           }
         }
-        else if(s.y > (this.y + this.height)) //иначе - движение вверх и убежало за нижний край
+        else if(s.y > (this.y + this.height)) //РёРЅР°С‡Рµ - РґРІРёР¶РµРЅРёРµ РІРІРµСЂС… Рё СѓР±РµР¶Р°Р»Рѕ Р·Р° РЅРёР¶РЅРёР№ РєСЂР°Р№
         {
           var row = (i + 1) % _rows;
           for(var j = 0; j < _columns; j++)
